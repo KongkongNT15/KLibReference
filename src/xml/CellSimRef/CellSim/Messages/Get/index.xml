@@ -21,4 +21,6 @@
     </Returns>
 
     <Remarks>存在しない名前を指定すると空文字列が返されます。</Remarks>
+
+    <Example />
 </MethodPage>

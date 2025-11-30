@@ -241,6 +241,13 @@
 		</xs:sequence>
 	</xs:complexType>
 
+	<xs:complexType name="FunctionExampleType">
+		<xs:sequence>
+			<xs:element name="Description" type="TextBlockType" minOccurs="0" />
+		</xs:sequence>
+		<xs:attribute name="Path" type="xs:string" default="ex.cpp" use="optional" />
+	</xs:complexType>
+
 	<xs:element name="MethodPage">
 		<xs:complexType>
 			<xs:sequence>
@@ -249,6 +256,7 @@
 				<xs:element name="Description" type="TextBlockType" />
 				<xs:element ref="Returns" />
 				<xs:element name="Remarks" type="TextBlockType" minOccurs="0" />
+				<xs:element name="Example" type="FunctionExampleType" minOccurs="0" />
 			</xs:sequence>
 			<xs:attribute name="ClassName" type="xs:string" use="optional" />
 			<xs:attribute name="ConstexprSpecifier" type="FunctionConstexprSpecifier" default="None" use="optional" />
