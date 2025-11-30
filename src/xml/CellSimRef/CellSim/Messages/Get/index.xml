@@ -3,12 +3,23 @@
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xsi:noNamespaceSchemaLocation="../../../../Schema/CppPage.xsd">
 
-    <Description></Description>
+    <MethodAttribute 
+        MethodType="Static"
+        Nodiscard="true"
+        Noexcept="false"/>
+
+    <Parameters>
+        <Parameter Name="name" Description="メッセージに関連付けられた名前">
+            <Type Name="std.string" TypeQualifier="ConstLValueReference" />
+        </Parameter>
+    </Parameters>
+
+    <Description>メッセージを取得します。</Description>
 
     <Returns>
-        <Type Name="bool" >
-            <Type Name="" />
-        </Type>
-        <Description></Description>
+        <Type Name="std.string" TypeQualifier="ConstLValueReference" />
+        <Description>メッセージ本文</Description>
     </Returns>
+
+    <Remarks>存在しない名前を指定すると空文字列が返されます。</Remarks>
 </MethodPage>

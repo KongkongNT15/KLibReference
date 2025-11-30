@@ -80,14 +80,12 @@
 	</xs:simpleType>
 
 	<xs:complexType name="ParameterType">
-		<xs:simpleContent>
-			<xs:extension base="xs:string">
-				<xs:attribute name="Name" type="xs:string" use="required" />
-				<xs:attribute name="Description" type="xs:string" use="required" />
-				<xs:attribute name="Type" type="xs:string" use="required" />
-				<xs:attribute name="TypeQualifier" type="TypeQualifier" default="Unqualified" />
-			</xs:extension>
-		</xs:simpleContent>
+		<xs:sequence>
+			<xs:element name="Type" type="TemplateSpecializationType" minOccurs="0" maxOccurs="1" />
+		</xs:sequence>
+		<xs:attribute name="Name" type="xs:string" use="required" />
+		<xs:attribute name="Description" type="xs:string" use="required" />
+		<xs:attribute name="TypeQualifier" type="TypeQualifier" default="Unqualified" />
 	</xs:complexType>
 
 	<xs:complexType name="TemplateParameterType">
@@ -109,6 +107,7 @@
 			<xs:element name="TypeSpecialization" type="TemplateSpecializationType" minOccurs="0" maxOccurs="unbounded" />
 		</xs:choice>
 		<xs:attribute name="Name" type="xs:string" use="required" />
+		<xs:attribute name="TypeQualifier" type="TypeQualifier" default="Unqualified" use="optional" />
 	</xs:complexType>
 
 	<xs:element name="TypeSpecialization" type="TemplateSpecializationType" />
@@ -139,10 +138,55 @@
 		<xs:attribute name="Description" use="optional" />
 	</xs:complexType>
 
+	
+
+	<!-- メンバー関数がconstかstaticか -->
+	<xs:simpleType name="MemberFunctionType">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="Const" />
+			<xs:enumeration value="Normal" />
+			<xs:enumeration value="Static" />
+		</xs:restriction>
+	</xs:simpleType>
+
+	<!-- constexpr, consteval 修飾子 -->
+	<xs:simpleType name="FunctionConstexprSpecifier">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="Constexpr" />
+			<xs:enumeration value="Consteval" />
+			<xs:enumeration value="None" />
+		</xs:restriction>
+	</xs:simpleType>
+
+	<xs:complexType name="FunctionAttributeType">
+		<xs:attribute name="ConstexprSpecifier" type="FunctionConstexprSpecifier" default="None" use="optional" />
+		<xs:attribute name="Nodiscard" type="xs:boolean" default="false" use="optional" />
+		<xs:attribute name="Noexcept" type="xs:boolean" default="false" use="optional" />
+	</xs:complexType>
+
+	<xs:element name="FunctionAttribute" >
+		<xs:complexType>
+			<xs:complexContent>
+				<xs:extension base="FunctionAttributeType">
+					<xs:attribute name="IsStatic" type="xs:boolean" />
+				</xs:extension>
+			</xs:complexContent>
+		</xs:complexType>
+	</xs:element>
+
+	<xs:element name="MethodAttribute">
+		<xs:complexType>
+			<xs:complexContent>
+				<xs:extension base="FunctionAttributeType">
+					<xs:attribute name="MethodType" type="MemberFunctionType" />
+				</xs:extension>
+			</xs:complexContent>
+		</xs:complexType>
+	</xs:element>
+
 	<xs:element name="Type" >
 		<xs:complexType>
 			<xs:attribute name="ClassName" use="optional" />
-
 		</xs:complexType>
 	</xs:element>
 
@@ -193,8 +237,12 @@
 	<xs:element name="MethodPage">
 		<xs:complexType>
 			<xs:sequence>
+				<xs:element ref="MethodAttribute" minOccurs="0" />
+				<xs:element ref="TemplateParameters" minOccurs="0" />
+				<xs:element ref="Parameters" minOccurs="0" />
 				<xs:element name="Description" type="TextBlockType" />
 				<xs:element ref="Returns" />
+				<xs:element name="Remarks" type="TextBlockType" minOccurs="0" />
 			</xs:sequence>
 			<xs:attribute name="ClassName" type="xs:string" use="optional" />
 		</xs:complexType>
@@ -204,8 +252,7 @@
 		<xs:complexType>
 			<xs:sequence>
 				<xs:element name="Description" type="TextBlockType" />
-				<xs:element ref="TemplateParameters" minOccurs="0" maxOccurs="1" />
-				<xs:element ref="Parameters" minOccurs="0" maxOccurs="1" />
+				
 			</xs:sequence>
 		</xs:complexType>
 	</xs:element>

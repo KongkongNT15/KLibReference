@@ -1,0 +1,1 @@
+﻿::puts(Messages::Get("Simulation.Run.Running").c_str());
