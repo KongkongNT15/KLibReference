@@ -1,0 +1,14 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<MethodPage 
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:noNamespaceSchemaLocation="../../../../Schema/CppPage.xsd">
+
+    <Description></Description>
+
+    <Returns>
+        <Type Name="bool" >
+            <Type Name="" />
+        </Type>
+        <Description></Description>
+    </Returns>
+</MethodPage>
