@@ -1,12 +1,11 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <MethodPage 
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xsi:noNamespaceSchemaLocation="../../../../Schema/CppPage.xsd">
-
-    <MethodAttribute 
-        MethodType="Static"
-        Nodiscard="true"
-        Noexcept="false"/>
+    xsi:noNamespaceSchemaLocation="../../../../Schema/CppPage.xsd"
+    MethodType="Static"
+    Name="Get"
+    Nodiscard="true"
+    Noexcept="false">
 
     <Parameters>
         <Parameter Name="name" Description="メッセージに関連付けられた名前">

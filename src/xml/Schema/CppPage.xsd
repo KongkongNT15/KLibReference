@@ -137,15 +137,22 @@
 		<xs:attribute name="Name" type="xs:string" use="optional" />
 		<xs:attribute name="Description" use="optional" />
 	</xs:complexType>
-
 	
-
 	<!-- メンバー関数がconstかstaticか -->
 	<xs:simpleType name="MemberFunctionType">
 		<xs:restriction base="xs:string">
 			<xs:enumeration value="Const" />
 			<xs:enumeration value="Normal" />
 			<xs:enumeration value="Static" />
+		</xs:restriction>
+	</xs:simpleType>
+
+	<!-- 仮想関数定義 -->
+	<xs:simpleType name="MemberFunctionVirtualType">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="NonVirtual" />
+			<xs:enumeration value="PureVirtual" />
+			<xs:enumeration value="Virtual" />
 		</xs:restriction>
 	</xs:simpleType>
 
@@ -237,7 +244,6 @@
 	<xs:element name="MethodPage">
 		<xs:complexType>
 			<xs:sequence>
-				<xs:element ref="MethodAttribute" minOccurs="0" />
 				<xs:element ref="TemplateParameters" minOccurs="0" />
 				<xs:element ref="Parameters" minOccurs="0" />
 				<xs:element name="Description" type="TextBlockType" />
@@ -245,6 +251,12 @@
 				<xs:element name="Remarks" type="TextBlockType" minOccurs="0" />
 			</xs:sequence>
 			<xs:attribute name="ClassName" type="xs:string" use="optional" />
+			<xs:attribute name="ConstexprSpecifier" type="FunctionConstexprSpecifier" default="None" use="optional" />
+			<xs:attribute name="MethodType" type="MemberFunctionType" />
+			<xs:attribute name="Name" type="xs:string" use="required" />
+			<xs:attribute name="Nodiscard" type="xs:boolean" default="false" use="optional" />
+			<xs:attribute name="Noexcept" type="xs:boolean" default="false" use="optional" />
+			<xs:attribute name="VirtualType" type="MemberFunctionVirtualType" default="NonVirtual" use="optional" />
 		</xs:complexType>
 	</xs:element>
 
