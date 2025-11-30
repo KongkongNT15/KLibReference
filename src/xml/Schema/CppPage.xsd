@@ -1,0 +1,164 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema
+    xmlns:xs="http://www.w3.org/2001/XMLSchema">
+
+	<xs:include schemaLocation="BaseSchema.xsd" />
+
+	<xs:simpleType name="FuncDefType">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="Default" />
+			<xs:enumeration value="Deleted" />
+			<xs:enumeration value="Defined" />
+		</xs:restriction>
+	</xs:simpleType>
+
+	<!--  -->
+
+	<xs:simpleType name="OperatorType">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="Assignment" />         <!-- = (単純代入) -->
+			<xs:enumeration value="AddAssignment" />      <!-- += (複合代入) -->
+			<xs:enumeration value="SubtractAssignment" /> <!-- -= -->
+			<xs:enumeration value="MultiplyAssignment" /> <!-- *= -->
+			<xs:enumeration value="DivideAssignment" />   <!-- /= -->
+			<xs:enumeration value="ModuloAssignment" />   <!-- %= -->
+			<xs:enumeration value="BitwiseANDAssignment" />   <!-- &amp;= -->
+			<xs:enumeration value="BitwiseORAssignment" /><!-- |= マイナーな複合代入 -->
+			<xs:enumeration value="BitwiseXORAssignment" />   <!-- ^= マイナーな複合代入 -->
+			<xs:enumeration value="LeftShiftAssignment" /><!-- &lt;&lt;= -->
+			<xs:enumeration value="RightShiftAssignment" />   <!-- &gt;&gt;= -->
+			<xs:enumeration value="Addition" />           <!-- + (二項) -->
+			<xs:enumeration value="Subtraction" />        <!-- - (二項) -->
+			<xs:enumeration value="Multiplication" />     <!-- * (二項) -->
+			<xs:enumeration value="Division" />           <!-- / -->
+			<xs:enumeration value="Modulo" />             <!-- % -->
+			<xs:enumeration value="Equal" />              <!-- == -->
+			<xs:enumeration value="NotEqual" />           <!-- != -->
+			<xs:enumeration value="LessThan" />           <!-- &lt; -->
+			<xs:enumeration value="GreaterThan" />        <!-- &gt; -->
+			<xs:enumeration value="LessEqual" />          <!-- &lt;= -->
+			<xs:enumeration value="GreaterEqual" />       <!-- &gt;= -->
+			<xs:enumeration value="ThreeWayComparison" />   <!-- &lt;=&gt; (C++20: 宇宙船演算子) -->
+			<xs:enumeration value="LogicalAND" />         <!-- &amp;&amp; -->
+			<xs:enumeration value="LogicalOR" />          <!-- || -->
+			<xs:enumeration value="LogicalNOT" />         <!-- ! -->
+			<xs:enumeration value="BitwiseAND" />         <!-- &amp; (二項) -->
+			<xs:enumeration value="BitwiseOR" />          <!-- | operator|() -->
+			<xs:enumeration value="BitwiseXOR" />         <!-- ^ operator^() -->
+			<xs:enumeration value="LeftShift" />          <!-- &lt;&lt; (ストリーム演算子としてもよく使われる) -->
+			<xs:enumeration value="RightShift" />         <!-- &gt;&gt; (ストリーム演算子としてもよく使われる) -->
+			<xs:enumeration value="BitwiseNOT" />         <!-- ~ (単項) -->
+			<xs:enumeration value="AddressOf" />          <!-- &amp; (アドレス取得) -->
+			<xs:enumeration value="Dereference" />        <!-- * (間接参照/デリファレンス) -->
+			<xs:enumeration value="PrefixIncrement" />    <!-- ++ (前置インクリメント) -->
+			<xs:enumeration value="PostfixIncrement" />   <!-- ++ (後置インクリメント) -->
+			<xs:enumeration value="PrefixDecrement" />    <!-- (前置デクリメント) -->
+			<xs:enumeration value="PostfixDecrement" />   <!-- (後置デクリメント) -->
+			<xs:enumeration value="UnaryPlus" />          <!-- + (単項プラス) -->
+			<xs:enumeration value="UnaryMinus" />         <!-- - (単項マイナス) -->
+			<xs:enumeration value="Subscript" />          <!-- [] (添字演算子) -->
+			<xs:enumeration value="FunctionCall" />       <!-- () (関数呼び出し演算子) -->
+			<xs:enumeration value="MemberAccessPointer" /><!-- -> (メンバアクセス演算子/アロー演算子) -->
+			<xs:enumeration value="Comma" />              <!--  /> (コンマ演算子) -->
+			<xs:enumeration value="TernaryConditional" /> <!-- ?: (条件演算子) -->
+			<xs:enumeration value="New" />                <!-- new (メモリ確保) -->
+			<xs:enumeration value="Delete" />             <!-- delete (メモリ解放) -->
+			<xs:enumeration value="SizeOf" />             <!-- sizeof (サイズ取得) -->
+			<xs:enumeration value="TypeID" />             <!-- typeid (型情報取得) -->
+		</xs:restriction>
+	</xs:simpleType>
+
+	<xs:element name="TemplateParameter">
+		<xs:complexType>
+			<xs:simpleContent>
+				<xs:extension base="xs:string">
+					<xs:attribute name="Name" type="xs:string" use="required" />
+					<xs:attribute name="Description" type="xs:string" use="required" />
+				</xs:extension>
+			</xs:simpleContent>
+		</xs:complexType>
+	</xs:element>
+	
+	<xs:element name="TemplateParameters">
+		<xs:complexType>
+			<xs:choice minOccurs="1">
+				<xs:element ref="TemplateParameter" />
+			</xs:choice>
+		</xs:complexType>
+	</xs:element>
+
+	<xs:complexType name="FunctionType">
+		<xs:attribute name="Uri" type="xs:string" use="optional" />
+		<xs:attribute name="Type" type="FuncDefType" default="Default" use="optional" />
+		<xs:attribute name="Name" type="xs:string" use="optional" />
+		<xs:attribute name="Description" use="optional" />
+	</xs:complexType>
+	
+	<xs:element name="Constructors">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="DefaultConstructor" type="FunctionType" />
+				<xs:element name="CopyConstructor" type="FunctionType" />
+				<xs:element name="MoveConstructor" type="FunctionType" />
+				<xs:element name="Constructor" type="FunctionType" minOccurs="0" maxOccurs="unbounded" />
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+
+	<xs:element name="Destructor" >
+		<xs:complexType>
+			<xs:attribute name="Description" use="optional" />
+			<xs:attribute name="Uri" use="optional" />
+			<xs:attribute name="Type" type="FuncDefType" default="Default" use="optional" />
+		</xs:complexType>
+	</xs:element>
+
+	<xs:element name="Operators">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="CopyOperator" type="FunctionType" />
+				<xs:element name="MoveOperator" type="FunctionType" />
+				<xs:element name="Operator" type="FunctionType" minOccurs="0" maxOccurs="unbounded" />
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+
+	<xs:complexType name="FunctionsType">
+		<xs:sequence>
+			<xs:element name="Function" type="FunctionType" minOccurs="1" maxOccurs="unbounded" />
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:element name="MethodPage">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="Description" type="TextBlockType" />
+			</xs:sequence>
+			<xs:attribute name="ClassUri" type="xs:string" default="../" use="optional" />
+		</xs:complexType>
+	</xs:element>
+
+	<xs:element name="NamespacePage">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="Description" type="TextBlockType" />
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+
+	<xs:element name="StructPage" >
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="Description" type="TextBlockType" />
+				<xs:element ref="TemplateParameters" minOccurs="0" maxOccurs="1" />
+				<xs:element name="StaticMethods" type="FunctionsType" minOccurs="0" />
+				<xs:element ref="Constructors" />
+				<xs:element ref="Destructor" />
+				<xs:element ref="Operators" />
+				<xs:element name="Methods" type="FunctionsType" minOccurs="0" />
+			</xs:sequence>
+			<xs:attribute name="Name" type="xs:string" use="required" />
+			<xs:attribute name="BaseClassUri" type="xs:string" use="optional" />
+		</xs:complexType>
+	</xs:element>
+</xs:schema>

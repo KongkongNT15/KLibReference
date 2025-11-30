@@ -1,0 +1,26 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<StructPage
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:noNamespaceSchemaLocation="../../Schema/CppPage.xsd"
+    Name="Messages">
+
+    <Description>実行時に画面に表示するメッセージを管理します。メッセージは./languagesにある言語ファイルから取得します。</Description>
+
+    <StaticMethods>
+        <Function Uri="Get/" />
+    </StaticMethods>
+
+    <Constructors>
+        <DefaultConstructor Type="Deleted" />
+        <CopyConstructor Type="Deleted" />
+        <MoveConstructor Type="Deleted" />
+    </Constructors>
+
+    <Destructor Type="Deleted" />
+
+    <Operators>
+        <CopyOperator Type="Deleted" />
+        <MoveOperator Type="Deleted" />
+    </Operators>
+
+</StructPage>

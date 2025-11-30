@@ -1,0 +1,48 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema
+    xmlns:xs="http://www.w3.org/2001/XMLSchema">
+
+	<xs:simpleType name="ColorType">
+		<xs:restriction base="xs:string">
+			<xs:pattern value="#[0-9A-Fa-f]{6}"/>
+		</xs:restriction>
+	</xs:simpleType>
+
+	<xs:complexType name="TextType">
+		<xs:simpleContent>
+			<xs:extension base="xs:string">
+				<xs:attribute name="FontSize" type="xs:string" use="optional" />
+				<xs:attribute name="Color" type="ColorType" use="optional" />
+			</xs:extension>
+		</xs:simpleContent>
+	</xs:complexType>
+
+	<xs:element name="Line" type="TextType" />
+
+	<xs:element name="Link" >
+		<xs:complexType>
+            <xs:simpleContent>
+				<xs:extension base="xs:string">
+                    <xs:attribute name="Uri" type="xs:string" use="required" />
+                    <xs:attribute name="FontSize" type="xs:string" use="optional" />
+                    <xs:attribute name="Color" type="ColorType" use="optional" />
+				</xs:extension>
+			</xs:simpleContent>
+		</xs:complexType>
+	</xs:element>
+
+	<xs:element name="Run" type="TextType" />
+
+	<xs:complexType name="TextBlockType" mixed="true">
+		<xs:choice minOccurs="0" maxOccurs="unbounded" >
+			<xs:element ref="Line" />
+			<xs:element ref="Link" />
+			<xs:element ref="Run" />
+		</xs:choice>
+
+		<xs:attribute name="FontSize" type="xs:string" use="optional" />
+		<xs:attribute name="Color" type="ColorType" use="optional" />
+	</xs:complexType>
+
+	<xs:element name="TextBlock" type="TextBlockType" />
+</xs:schema>
