@@ -18,6 +18,7 @@
 	</xs:complexType>
 
 	<xs:element name="Line" type="TextType" />
+	<xs:element name="InlineCode" type="TextType" />
 
 	<xs:element name="Link" >
 		<xs:complexType>
@@ -31,12 +32,28 @@
 		</xs:complexType>
 	</xs:element>
 
+	<xs:element name="Ref" >
+		<xs:complexType>
+            <xs:attribute name="Uri" type="xs:string" use="required" />
+			<xs:attribute name="FontSize" type="xs:string" use="optional" />
+			<xs:attribute name="Color" type="ColorType" use="optional" />
+		</xs:complexType>
+	</xs:element>
+
+	<xs:element name="Path" >
+		<xs:complexType>
+            <xs:attribute name="Value" type="xs:string" use="required" />
+		</xs:complexType>
+	</xs:element>
+
 	<xs:element name="Run" type="TextType" />
 
 	<xs:complexType name="TextBlockType" mixed="true">
 		<xs:choice minOccurs="0" maxOccurs="unbounded" >
+			<xs:element ref="InlineCode" />
 			<xs:element ref="Line" />
 			<xs:element ref="Link" />
+			<xs:element ref="Ref" />
 			<xs:element ref="Run" />
 		</xs:choice>
 
@@ -45,4 +62,10 @@
 	</xs:complexType>
 
 	<xs:element name="TextBlock" type="TextBlockType" />
+
+	<xs:complexType name="PathCollection">
+		<xs:sequence>
+			<xs:element ref="Path" minOccurs="1" maxOccurs="unbounded" />
+		</xs:sequence>
+	</xs:complexType>
 </xs:schema>

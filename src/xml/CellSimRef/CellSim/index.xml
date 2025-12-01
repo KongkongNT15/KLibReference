@@ -1,1 +1,13 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
+
+<NamespacePage
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:noNamespaceSchemaLocation="../../Schema/CppPage.xsd">
+
+    <Description></Description>
+
+    <Classes>
+        <Path Value="Messages/" />
+    </Classes>
+
+</NamespacePage>

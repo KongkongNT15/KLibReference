@@ -1,0 +1,26 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<MethodPage 
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:noNamespaceSchemaLocation="../../../../Schema/CppPage.xsd"
+    MethodType="Static"
+    Name="Initialize"
+    Nodiscard="false"
+    Noexcept="false">
+
+    <Description>メッセージを言語ファイルから取得し、クラス全体の機能を初期化します。</Description>
+
+    <Returns>
+        <Type Name="bool" />
+        <Description>初期化に成功したかどうか</Description>
+    </Returns>
+
+    <Remarks>
+        <Run>初期化を行わない場合、</Run>
+        <Ref Uri="/CellSim.Messages.Get/" />
+        <Run>でメッセージを取得することはできません。</Run>
+        <Run>また、既に初期化が完了している場合は</Run>
+        <InlineCode>false</InlineCode>
+        <Run>が返されます。</Run>
+    </Remarks>
+
+</MethodPage>

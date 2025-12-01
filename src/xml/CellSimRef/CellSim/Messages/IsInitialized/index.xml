@@ -1,0 +1,30 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<MethodPage 
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:noNamespaceSchemaLocation="../../../../Schema/CppPage.xsd"
+    MethodType="Static"
+    Name="IsInitialized"
+    Nodiscard="true"
+    Noexcept="true">
+
+    <Description>クラスが初期化されているかの状態を取得します。</Description>
+
+    <Returns>
+        <Type Name="bool" />
+        <Description>
+            <Run>すでにクラスが初期化されている場合は</Run>
+            <InlineCode>true</InlineCode>
+            <Run>、初期化されていない場合は</Run>
+            <InlineCode>false</InlineCode>
+            <Run>。</Run>
+        </Description>
+    </Returns>
+
+    <Remarks>
+        <Ref Uri="/CellSim.Messages.Initialize/" />
+        <Run>で初期化を行わない場合、</Run>
+        <Ref Uri="/CellSim.Messages.Get/" />
+        <Run>でメッセージを取得することはできません。</Run>
+    </Remarks>
+
+</MethodPage>

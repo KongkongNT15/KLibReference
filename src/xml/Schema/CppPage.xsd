@@ -228,6 +228,33 @@
 		<xs:attribute name="Path" type="xs:string" default="ex.cpp" use="optional" />
 	</xs:complexType>
 
+	<xs:complexType name="EnumMemberType">
+		<xs:sequence>
+			<xs:element name="Description" type="TextBlockType" minOccurs="0" />
+		</xs:sequence>
+		<xs:attribute name="Value" type="xs:integer" use="required" />
+	</xs:complexType>
+
+	<xs:element name="EnumMember" type="EnumMemberType" />
+
+	<!-- 列挙型の説明ページ -->
+	<xs:element name="EnumPage">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="Description" type="TextBlockType" />
+				<xs:element name="Members">
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element ref="EnumMember" minOccurs="1" maxOccurs="unbounded" />
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+			</xs:sequence>
+			<xs:attribute name="Name" type="xs:string" use="required" />
+			<xs:attribute name="IsEnumClass" type="xs:boolean" default="false" use="optional" />
+		</xs:complexType>
+	</xs:element>
+
 	<!-- 関数説明のページ -->
 	<xs:element name="FunctionPage">
 		<xs:complexType>
@@ -272,7 +299,10 @@
 		<xs:complexType>
 			<xs:sequence>
 				<xs:element name="Description" type="TextBlockType" />
-				
+				<xs:element name="Classes" type="PathCollection" minOccurs="0" />
+				<xs:element name="Structures" type="PathCollection" minOccurs="0" />
+				<xs:element name="Enumerationes" type="PathCollection" minOccurs="0" />
+				<xs:element name="Functions" type="PathCollection" minOccurs="0" />
 			</xs:sequence>
 		</xs:complexType>
 	</xs:element>
