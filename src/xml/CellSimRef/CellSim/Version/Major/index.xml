@@ -1,0 +1,21 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+
+<MethodPage
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:noNamespaceSchemaLocation="../../../../Schema/CppPage.xsd"
+    ConstexprSpecifier="Constexpr"
+    MethodType="Static"
+    Name="Major"
+    Nodiscard="true"
+    Noexcept="true">
+
+    <Description>CellSimのメジャーバージョンを表します。</Description>
+
+    <Returns>
+        <Type Name="int" />
+        <Description>メジャーバージョンを表す整数値。</Description>
+    </Returns>
+
+    <Example Path="../ex.cpp" />
+
+</MethodPage>

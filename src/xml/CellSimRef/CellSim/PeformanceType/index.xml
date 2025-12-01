@@ -1,0 +1,19 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+
+<EnumPage
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:noNamespaceSchemaLocation="../../../Schema/CppPage.xsd"
+    IsEnumClass="true"
+    Name="PeformanceType">
+
+    <Description>
+        <Run>実行時のパフォーマンス設定を表します。</Run>
+        <Run>速度を優先するか、メモリ使用量効率を優先するかを選択します。</Run>
+    </Description>
+
+    <Members>
+        <EnumMember Name="Fast" Value="0" Description="速度を優先します。" />
+        <EnumMember Name="LowMemory" Value="1" Description="メモリ効率を優先します。" />
+    </Members>
+
+</EnumPage>

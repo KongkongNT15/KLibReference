@@ -1,0 +1,21 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+
+<MethodPage
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:noNamespaceSchemaLocation="../../../../Schema/CppPage.xsd"
+    ConstexprSpecifier="Constexpr"
+    MethodType="Static"
+    Name="Extension"
+    Nodiscard="true"
+    Noexcept="true">
+
+    <Description>追加で表示する文字列を表します。</Description>
+
+    <Returns>
+        <Type Name="char" TypeQualifier="ConstPointer" />
+        <Description>C文字列。</Description>
+    </Returns>
+
+    <Example Path="../ex.cpp" />
+
+</MethodPage>

@@ -1,17 +1,16 @@
-﻿<?xml version="1.0" encoding="utf-8" ?>
-
-<ClassPage
+﻿<ClassPage
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xsi:noNamespaceSchemaLocation="../../../Schema/CppPage.xsd"
     IsFinal="true"
-    Name="Messages">
+    Name="Version">
 
-    <Description>実行時に画面に表示するメッセージを管理します。メッセージは./languagesにある言語ファイルから取得します。</Description>
+    <Description>CellSimのバージョン情報を提供します。</Description>
 
     <StaticMethods>
-        <Function Path="Get/" />
-        <Function Path="Initialize/" />
-        <Function Path="IsInitialized/" />
+        <Function Path="Extension/" />
+        <Function Path="Major/" />
+        <Function Path="Minor/" />
+        <Function Path="Patch/" />
     </StaticMethods>
 
     <Constructors>

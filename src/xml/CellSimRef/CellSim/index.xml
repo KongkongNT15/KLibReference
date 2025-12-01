@@ -8,6 +8,11 @@
 
     <Classes>
         <Path Value="Messages/" />
+        <Path Value="Version/" />
     </Classes>
+
+    <Enumerationes>
+        <Path Value="PeformanceType/" />
+    </Enumerationes>
 
 </NamespacePage>

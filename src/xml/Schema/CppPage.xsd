@@ -132,7 +132,7 @@
 	</xs:element>
 
 	<xs:complexType name="FunctionType">
-		<xs:attribute name="Uri" type="xs:string" use="optional" />
+		<xs:attribute name="Path" type="xs:string" use="optional" />
 		<xs:attribute name="Type" type="FuncDefType" default="Default" use="optional" />
 		<xs:attribute name="Name" type="xs:string" use="optional" />
 		<xs:attribute name="Description" use="optional" />
@@ -229,9 +229,8 @@
 	</xs:complexType>
 
 	<xs:complexType name="EnumMemberType">
-		<xs:sequence>
-			<xs:element name="Description" type="TextBlockType" minOccurs="0" />
-		</xs:sequence>
+		<xs:attribute name="Name" type="xs:string" use="required" />
+		<xs:attribute name="Description" type="xs:string" use="required" />
 		<xs:attribute name="Value" type="xs:integer" use="required" />
 	</xs:complexType>
 
@@ -307,20 +306,21 @@
 		</xs:complexType>
 	</xs:element>
 
-	<xs:element name="StructPage" >
-		<xs:complexType>
-			<xs:sequence>
-				<xs:element name="Description" type="TextBlockType" />
-				<xs:element ref="TemplateParameters" minOccurs="0" maxOccurs="1" />
-				<xs:element name="StaticMethods" type="FunctionsType" minOccurs="0" />
-				<xs:element ref="Constructors" />
-				<xs:element ref="Destructor" />
-				<xs:element ref="Operators" />
-				<xs:element name="Methods" type="FunctionsType" minOccurs="0" />
-			</xs:sequence>
-			<xs:attribute name="IsFinal" type="xs:boolean" default="false" use="optional" />
-			<xs:attribute name="Name" type="xs:string" use="required" />
-			<xs:attribute name="BaseClassName" type="xs:string" use="optional" />
-		</xs:complexType>
-	</xs:element>
+	<xs:complexType name="StructPageType">
+		<xs:sequence>
+			<xs:element name="Description" type="TextBlockType" />
+			<xs:element ref="TemplateParameters" minOccurs="0" maxOccurs="1" />
+			<xs:element name="StaticMethods" type="FunctionsType" minOccurs="0" />
+			<xs:element ref="Constructors" />
+			<xs:element ref="Destructor" />
+			<xs:element ref="Operators" />
+			<xs:element name="Methods" type="FunctionsType" minOccurs="0" />
+		</xs:sequence>
+		<xs:attribute name="IsFinal" type="xs:boolean" default="false" use="optional" />
+		<xs:attribute name="Name" type="xs:string" use="required" />
+		<xs:attribute name="BaseClassName" type="xs:string" use="optional" />
+	</xs:complexType>
+
+	<xs:element name="ClassPage" type="StructPageType" />
+	<xs:element name="StructPage" type="StructPageType" />
 </xs:schema>
