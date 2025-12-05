@@ -3,4 +3,6 @@
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xsi:noNamespaceSchemaLocation="../../../Schema/CppPage.xsd">
 
+    <Description>CellSimで実装されているAPIに関する詳細情報を確認します。</Description>
+
 </CppRefPage>

@@ -325,5 +325,11 @@
 	<xs:element name="StructPage" type="StructPageType" />
 
 	<!--  -->
-	<xs:element name="CppRefPage" />
+	<xs:element name="CppRefPage" >
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="Description" type="TextBlockType" />
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
 </xs:schema>

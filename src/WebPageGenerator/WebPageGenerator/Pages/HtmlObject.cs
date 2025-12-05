@@ -4,7 +4,10 @@ using System.Text;
 
 namespace WebPageGenerator.Pages
 {
-    public abstract class Text : HtmlElement
+    public abstract class HtmlObject
     {
+        public abstract string Value { get; }
+
+        protected HtmlObject() { }
     }
 }

@@ -19,3 +19,13 @@ body {
     background-color: var(--color-background);
     color: var(--color-text);
 }
+
+table {
+  border-collapse: collapse;
+  
+}
+
+table th, table td {
+  border: solid 1px var(--color-text);
+  padding: 12px;
+}

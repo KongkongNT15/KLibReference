@@ -4,7 +4,7 @@ using System.Text;
 
 namespace WebPageGenerator.Pages
 {
-    public abstract class Text : HtmlElement
+    public class Line : Text
     {
     }
 }
