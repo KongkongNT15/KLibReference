@@ -7,6 +7,8 @@
 
     --color-inline-code: #000000;
     --color-inline-code-background: #F0F0F0;
+
+    --color-table: #000000;
 }
 
 /*  ダークモードでカスタムプロパティの値を上書き */
@@ -19,6 +21,8 @@
 
         --color-inline-code: #FFFFFF;
         --color-inline-code-background: #000000;
+
+        --color-table: #504F50;
     }
 }
 
@@ -32,12 +36,12 @@ table {
 }
 
 table th, table td {
-  border: solid 1px var(--color-text);
+  border: solid 1px var(--color-table);
   padding: 12px;
 }
 
 .source-table {
-  border: solid 1px var(--color-text);
+  border: solid 1px var(--color-table);
   padding: 0px;
 }
 
@@ -46,6 +50,8 @@ table th, table td {
   border-radius: 8px;
   color: var(--color-inline-code);
   font-family: 'Consolas';
+  font-size: 14px;
+  margin: 4px;
   padding: 4px;
 }
 
@@ -53,7 +59,8 @@ table th, table td {
   background-color: #1E1E1E;
   color: #FFFFFF;
   font-family: 'Consolas';
-  font-size: 14;
+  font-size: 14px;
+  margin: 0px;
   padding: 16px;
 }
 
