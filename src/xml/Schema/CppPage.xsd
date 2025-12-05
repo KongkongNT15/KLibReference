@@ -323,4 +323,7 @@
 
 	<xs:element name="ClassPage" type="StructPageType" />
 	<xs:element name="StructPage" type="StructPageType" />
+
+	<!--  -->
+	<xs:element name="CppRefPage" />
 </xs:schema>

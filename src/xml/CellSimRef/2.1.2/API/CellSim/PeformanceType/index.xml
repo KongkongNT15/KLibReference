@@ -2,7 +2,7 @@
 
 <EnumPage
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xsi:noNamespaceSchemaLocation="../../../Schema/CppPage.xsd"
+    xsi:noNamespaceSchemaLocation="../../../../../Schema/CppPage.xsd"
     IsEnumClass="true"
     Name="PeformanceType">
 

@@ -4,7 +4,11 @@ using System.Text;
 
 namespace WebPageGenerator.Pages
 {
-    internal class PageGenerator
+    internal static class PageGenerator
     {
+        internal static void Generate(string path, string defaultNamespace)
+        {
+
+        }
     }
 }

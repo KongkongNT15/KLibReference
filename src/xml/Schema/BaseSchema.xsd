@@ -68,4 +68,32 @@
 			<xs:element ref="Path" minOccurs="1" maxOccurs="unbounded" />
 		</xs:sequence>
 	</xs:complexType>
+
+	<xs:simpleType name="PageType">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="Cpp" />
+			<xs:enumeration value="Normal" />
+		</xs:restriction>
+	</xs:simpleType>
+
+	<xs:element name="Page">
+		
+	</xs:element>
+
+	<xs:element name="Header">
+		<xs:complexType>
+            <xs:complexContent>
+				<xs:extension base="TextBlockType">
+                    <xs:attribute name="Level" use="required" >
+						<xs:simpleType>
+							<xs:restriction base="xs:integer">
+								<xs:minInclusive value="1"/>
+								<xs:maxInclusive value="6"/>
+							</xs:restriction>
+						</xs:simpleType>
+					</xs:attribute>
+				</xs:extension>
+			</xs:complexContent>
+		</xs:complexType>
+	</xs:element>
 </xs:schema>
