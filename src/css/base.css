@@ -1,0 +1,21 @@
+/* :root 擬似クラスでカスタムプロパティを定義 */
+/* 💡 デフォルトはライトモードとして定義 */
+:root {
+    --color-background: white;
+    --color-text: black;
+    --color-primary: royalblue;
+}
+
+/*  ダークモードでカスタムプロパティの値を上書き */
+@media (prefers-color-scheme: dark) {
+    :root {
+        --color-background: #121212;
+        --color-text: white;
+        --color-primary: cornflowerblue; /* ダークモードに合う色に調整 */
+    }
+}
+
+body {
+    background-color: var(--color-background);
+    color: var(--color-text);
+}

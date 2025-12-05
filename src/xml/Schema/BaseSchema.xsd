@@ -24,7 +24,7 @@
 		<xs:complexType>
             <xs:simpleContent>
 				<xs:extension base="xs:string">
-                    <xs:attribute name="Uri" type="xs:string" use="required" />
+                    <xs:attribute name="Path" type="xs:string" use="required" />
                     <xs:attribute name="FontSize" type="xs:string" use="optional" />
                     <xs:attribute name="Color" type="ColorType" use="optional" />
 				</xs:extension>
@@ -34,7 +34,7 @@
 
 	<xs:element name="Ref" >
 		<xs:complexType>
-            <xs:attribute name="Uri" type="xs:string" use="required" />
+            <xs:attribute name="Path" type="xs:string" use="required" />
 			<xs:attribute name="FontSize" type="xs:string" use="optional" />
 			<xs:attribute name="Color" type="ColorType" use="optional" />
 		</xs:complexType>
@@ -94,6 +94,23 @@
 					</xs:attribute>
 				</xs:extension>
 			</xs:complexContent>
+		</xs:complexType>
+	</xs:element>
+
+	<xs:complexType name="TableRowType">
+		<xs:choice minOccurs="1" maxOccurs="unbounded">
+			<xs:element name="TableHeader" />
+			<xs:element name="TableData" />
+		</xs:choice>
+	</xs:complexType>
+	<xs:element name="TableRow" type="TableRowType" />
+
+	<!-- <table> -->
+	<xs:element name="Table">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="TableRow" minOccurs="1" maxOccurs="unbounded" />
+			</xs:sequence>
 		</xs:complexType>
 	</xs:element>
 </xs:schema>
