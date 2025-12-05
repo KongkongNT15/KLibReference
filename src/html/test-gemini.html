@@ -1,0 +1,38 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>クラスの使用例</title>
+    <style>
+        /* styles.css */
+
+        /* .highlight という名前のクラスを作成（定義） */
+        .highlight {
+            background-color: yellow;
+            color: black;
+            padding: 2px 4px;
+            border-radius: 3px;
+        }
+
+        /* .btn-primary という名前のボタン用クラスを作成 */
+        .btn-primary {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: royalblue;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+
+    <button class="btn-primary">メインボタン</button>
+
+    <p>
+        この文の <span class="highlight">特定の単語</span> を目立たせています。
+    </p>
+
+    <a href="#" class="btn-primary highlight">複合クラスの適用</a>
+</body>
+</html>

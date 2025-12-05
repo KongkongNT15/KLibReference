@@ -4,14 +4,21 @@
     --color-background: white;
     --color-text: black;
     --color-primary: royalblue;
+
+    --color-inline-code: #000000;
+    --color-inline-code-background: #F0F0F0;
 }
 
 /*  ダークモードでカスタムプロパティの値を上書き */
+
 @media (prefers-color-scheme: dark) {
     :root {
         --color-background: #121212;
         --color-text: white;
         --color-primary: cornflowerblue; /* ダークモードに合う色に調整 */
+
+        --color-inline-code: #FFFFFF;
+        --color-inline-code-background: #000000;
     }
 }
 
@@ -22,10 +29,82 @@ body {
 
 table {
   border-collapse: collapse;
-  
 }
 
 table th, table td {
   border: solid 1px var(--color-text);
   padding: 12px;
+}
+
+.source-table {
+  border: solid 1px var(--color-text);
+  padding: 0px;
+}
+
+.inline-code {
+  background-color: #1E1E1E;
+  border-radius: 8px;
+  color: var(--color-inline-code);
+  font-family: 'Consolas';
+  padding: 4px;
+}
+
+.source-code {
+  background-color: #1E1E1E;
+  color: #FFFFFF;
+  font-family: 'Consolas';
+  font-size: 14;
+  padding: 16px;
+}
+
+.source-class {
+  color: #4EC9B0;
+}
+
+.source-comment {
+  color: #57A64A;
+}
+
+.source-enum {
+  color: #B8D7A3;
+}
+
+.source-field {
+  color: #FFFFFF;
+}
+
+.source-function {
+  color: #DCDCAA;
+}
+
+.source-interface {
+  color: #B8D7A3;
+}
+
+.source-keyword {
+  color: #569CD6;
+}
+
+.source-keyword-purple {
+  color: #D8A0DF;
+}
+
+.source-local-variable {
+  color: #9CDCFE;
+}
+
+.source-number {
+  color: #B5CEA8;
+}
+
+.source-preprocess {
+  color: #9B9B9B;
+}
+
+.source-string {
+  color: #D69D85;
+}
+
+.source-struct {
+  color: #86C691;
 }

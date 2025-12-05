@@ -4,9 +4,8 @@ using System.Text;
 
 namespace WebPageGenerator.Pages
 {
-    public abstract class HtmlNode
+    public abstract class HtmlNode : HtmlObject
     {
-        
         protected HtmlNode() { }
     }
 }

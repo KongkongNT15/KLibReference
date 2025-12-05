@@ -7,7 +7,11 @@ namespace WebPageGenerator.Pages
     public sealed class ColorAttribute : HtmlAttribute
     {
         public Color Color;
-        public override string Value => Color.ToString();
+        public override string Value
+        {
+            get => Color.ToString();
+            set => Color = new Color(value);
+        }
 
         public ColorAttribute(string name, Color color) : base(name)
         {

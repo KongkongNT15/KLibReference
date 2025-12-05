@@ -4,7 +4,10 @@ using System.Text;
 
 namespace WebPageGenerator.Pages
 {
-    public class Run : Text
+    public sealed class Run : Text
     {
+        public Run() { }
+
+        public Run(string value) : base(value) { }
     }
 }

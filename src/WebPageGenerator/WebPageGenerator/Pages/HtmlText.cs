@@ -7,7 +7,11 @@ namespace WebPageGenerator.Pages
     public sealed class HtmlText : SimpleNode
     {
         public string Text;
-        public override string Value => Text;
+        public override string Value
+        {
+            get => Text;
+            set => Text = value;
+        }
 
         public HtmlText()
         {
