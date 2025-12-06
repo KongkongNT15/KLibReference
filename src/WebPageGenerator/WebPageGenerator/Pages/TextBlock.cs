@@ -69,5 +69,6 @@ namespace WebPageGenerator.Pages
             m_nodes.Add(new HtmlText(text));
         }
 
+        public void Add(Text text) => m_inlines.Add(text);
     }
 }
