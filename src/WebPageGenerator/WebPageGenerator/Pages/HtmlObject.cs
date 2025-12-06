@@ -6,6 +6,7 @@ namespace WebPageGenerator.Pages
 {
     public abstract class HtmlObject
     {
+        public abstract HtmlObject DeepCopy { get; }
         public abstract string Value { get; set; }
 
         protected HtmlObject() { }

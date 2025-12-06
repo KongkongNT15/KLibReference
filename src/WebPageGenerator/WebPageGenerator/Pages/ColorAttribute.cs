@@ -7,6 +7,9 @@ namespace WebPageGenerator.Pages
     public sealed class ColorAttribute : HtmlAttribute
     {
         public Color Color;
+
+        public override ColorAttribute DeepCopy => new(Name, Color);
+
         public override string Value
         {
             get => Color.ToString();

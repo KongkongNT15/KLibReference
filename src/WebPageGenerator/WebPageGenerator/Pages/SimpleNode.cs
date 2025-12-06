@@ -6,5 +6,6 @@ namespace WebPageGenerator.Pages
 {
     public abstract class SimpleNode : HtmlNode
     {
+        public override SimpleNode DeepCopy => throw new NotImplementedException();
     }
 }

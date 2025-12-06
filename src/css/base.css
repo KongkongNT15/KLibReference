@@ -52,7 +52,7 @@ table th, table td {
   font-family: 'Consolas';
   font-size: 14px;
   margin: 4px;
-  padding: 4px;
+  padding: 4px 8px;
 }
 
 .source-code {

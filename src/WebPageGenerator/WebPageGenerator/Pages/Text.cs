@@ -8,9 +8,15 @@ namespace WebPageGenerator.Pages
     {
         public string InlineText;
 
+        public override Text DeepCopy => new Text(InlineText);
+
         public override string Tag => "span";
 
-        public override string Value => InlineText;
+        public override string Value
+        {
+            get => InlineText;
+            set => InlineText = value;
+        }
 
         protected Text()
         {

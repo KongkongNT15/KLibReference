@@ -8,6 +8,8 @@ namespace WebPageGenerator.Pages
     {
         public string Name;
 
+        public override HtmlAttribute DeepCopy => throw new NotImplementedException();
+
         protected HtmlAttribute(string name)
         {
             Name = name;

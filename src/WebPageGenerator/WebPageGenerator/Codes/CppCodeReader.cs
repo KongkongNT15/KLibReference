@@ -71,7 +71,9 @@ namespace WebPageGenerator.Codes
         {
             Class,
             ClassMember,
+            ClassName,
             EnumMember,
+            EnumName,
             Namespace,
             NamespaceMember,
             None,
@@ -116,7 +118,7 @@ namespace WebPageGenerator.Codes
 
             List<CppStatus> statusList = [];
 
-            void func(char c, CppStatus status)
+            void func(CppStatus status)
             {
                 // 空白を除去
                 while ((tmp = reader.Peek()) != -1)
@@ -152,19 +154,21 @@ namespace WebPageGenerator.Codes
                         // 数値だよ
                         if ('0' <= c && c <= '9')
                         {
-                            func(c, CppStatus.Number);
+                            func(CppStatus.Number);
                         }
-                        else if (char.IsLetter(c))
+                        else if (char.IsLetter(c) || c == '_')
                         {
                             while ((tmp = reader.Peek()) != -1)
                             {
                                 c = (char)tmp;
 
-                                if (char.IsLetterOrDigit(c))
+                                // 名前に使える文字なら追加
+                                if (char.IsLetterOrDigit(c) || c == '_')
                                 {
                                     sb.Append(c);
                                     _ = reader.Read();
                                 }
+                                //名前に使えない文字が来たらそれまでが名前
                                 else
                                 {
                                     string word = sb.ToString();
@@ -172,11 +176,15 @@ namespace WebPageGenerator.Codes
 
                                     if (s_classes.Contains(word))
                                     {
-                                        m_elements.Add(new SourceCodeElement(word, WordType.Keyword));
+                                        m_elements.Add(new SourceCodeElement(word, WordType.Class));
+
+                                        func(CppStatus.ClassName);
                                     }
                                     else if (s_enums.Contains(word))
                                     {
+                                        m_elements.Add(new SourceCodeElement(word, WordType.Enum));
 
+                                        func(CppStatus.EnumName);
                                     }
                                 }
                             }
@@ -186,7 +194,7 @@ namespace WebPageGenerator.Codes
                             sb.Append('#');
                             _ = reader.Read();
 
-                            func(c, CppStatus.PreprocessBegin);
+                            func(CppStatus.PreprocessBegin);
                         }
                         else if (c == '.')
                         {
@@ -204,7 +212,7 @@ namespace WebPageGenerator.Codes
                         {
                             c = (char)tmp;
 
-                            if (char.IsLetterOrDigit(c))
+                            if (('0' <= c && c <= '9') || ('A' <= c && c <= 'Z') || c == '.' || c == '_')
                             {
                                 sb.Append(c);
                                 _ = reader.Read();
@@ -234,7 +242,7 @@ namespace WebPageGenerator.Codes
             {
                 c = (char)tmp;
 
-                func(c, CppStatus.None);
+                func(CppStatus.None);
 
                 throw new NotImplementedException();
             }
