@@ -8,7 +8,7 @@ namespace WebPageGenerator.Pages
     {
         public string InlineText;
 
-        public override Text DeepCopy => new Text(InlineText);
+        public override Text DeepCopy => new(InlineText);
 
         public override string Tag => "span";
 
@@ -26,6 +26,11 @@ namespace WebPageGenerator.Pages
         protected Text(string inlineText)
         {
             InlineText = inlineText;
+        }
+
+        public override string ToHtmlString()
+        {
+            return $"<{Tag}>{XmlHelper.ToXmlString(InlineText)}</{Tag}>";
         }
     }
 }

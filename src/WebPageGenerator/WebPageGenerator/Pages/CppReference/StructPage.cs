@@ -4,7 +4,7 @@ using System.Text;
 
 namespace WebPageGenerator.Pages.CppReference
 {
-    internal class StructPage
+    public sealed class StructPage
     {
     }
 }

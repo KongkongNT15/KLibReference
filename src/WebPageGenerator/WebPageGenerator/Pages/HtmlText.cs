@@ -22,5 +22,10 @@ namespace WebPageGenerator.Pages
         {
             Text = text; 
         }
+
+        public override string ToHtmlString()
+        {
+            return XmlHelper.ToXmlString(Text);
+        }
     }
 }

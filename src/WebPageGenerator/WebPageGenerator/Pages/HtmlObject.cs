@@ -10,5 +10,7 @@ namespace WebPageGenerator.Pages
         public abstract string Value { get; set; }
 
         protected HtmlObject() { }
+
+        public abstract string ToHtmlString();
     }
 }

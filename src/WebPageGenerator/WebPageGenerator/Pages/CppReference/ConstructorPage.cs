@@ -4,7 +4,7 @@ using System.Text;
 
 namespace WebPageGenerator.Pages.CppReference
 {
-    internal class ConstructorPage
+    public sealed class ConstructorPage : CppRefPage
     {
     }
 }

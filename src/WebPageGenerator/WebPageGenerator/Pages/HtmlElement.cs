@@ -12,6 +12,11 @@ namespace WebPageGenerator.Pages
         public IReadOnlyList<HtmlNode> Nodes => m_nodes;
         public IReadOnlyList<HtmlAttribute> Attributes => m_attributes;
 
+        /// <summary>
+        /// class="Class"
+        /// </summary>
+        public string? Class;
+
         public override HtmlElement DeepCopy => throw new NotImplementedException();
 
         /// <summary>
@@ -23,6 +28,36 @@ namespace WebPageGenerator.Pages
         {
             m_nodes = [];
             m_attributes = [];
+        }
+
+        public override string ToHtmlString()
+        {
+            StringBuilder stringBuilder = new();
+
+            stringBuilder.Append($"<{Tag}");
+
+            // クラス属性を追加
+            if (Class != null)
+            {
+                stringBuilder.Append($" class={Class}");
+            }
+
+            // その他属性を追加
+            foreach (var attribute in m_attributes)
+            {
+                stringBuilder.Append($" {attribute.ToHtmlString()}");
+            }
+
+            stringBuilder.Append(" >");
+
+            foreach (var node in m_nodes)
+            {
+                stringBuilder.Append(node.ToHtmlString());
+            }
+
+            stringBuilder.Append($"</{Tag}>");
+
+            return stringBuilder.ToString();
         }
     }
 }
