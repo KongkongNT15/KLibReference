@@ -15,7 +15,7 @@ namespace WebPageGenerator.Pages
             Name = name;
         }
 
-        public override string ToString()
+        public override string ToHtmlString()
         {
             return $"{Name}=\"{XmlHelper.ToXmlString(Value)}\"";
         }
