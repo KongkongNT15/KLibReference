@@ -25,5 +25,10 @@ namespace WebPageGenerator.Pages
         {
             Color = new Color(color);
         }
+
+        public override string ToHtmlString()
+        {
+            return $"{Name}={Color}";
+        }
     }
 }

@@ -30,6 +30,22 @@ namespace WebPageGenerator.Pages
             m_attributes = [];
         }
 
+        protected void DeepCopyTo(HtmlElement element)
+        {
+            element.m_attributes.Clear();
+            element.m_nodes.Clear();
+
+            foreach (var attribute in m_attributes)
+            {
+                element.m_attributes.Add(attribute.DeepCopy);
+            }
+
+            foreach (var node in m_nodes)
+            {
+                element.m_nodes.Add(node.DeepCopy);
+            }
+        }
+
         public override string ToHtmlString()
         {
             StringBuilder stringBuilder = new();
