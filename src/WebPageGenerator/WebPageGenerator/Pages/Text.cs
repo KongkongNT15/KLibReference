@@ -30,7 +30,9 @@ namespace WebPageGenerator.Pages
 
         public override string ToHtmlString()
         {
-            return $"<{Tag}>{XmlHelper.ToXmlString(InlineText)}</{Tag}>";
+            if (Class == null) return XmlHelper.ToXmlString(InlineText);
+
+            return $"<{Tag} class=\"{Class}\">{XmlHelper.ToXmlString(InlineText)}</{Tag}>";
         }
     }
 }

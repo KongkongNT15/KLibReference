@@ -28,7 +28,7 @@ namespace WebPageGenerator.Pages
 
         public override string ToHtmlString()
         {
-            return $"{Name}={Color}";
+            return $"{Name}=\"{Color}\"";
         }
     }
 }

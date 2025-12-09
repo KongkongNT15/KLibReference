@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using WebPageGenerator.Pages;
 
 namespace WebPageGenerator.Codes
 {
@@ -22,6 +23,14 @@ namespace WebPageGenerator.Codes
         {
             Code = code;
             WordType = type;
+        }
+
+        public Run ToHtml()
+        {
+            return new(Code)
+            {
+                Class = CssClasses.FromWordType(WordType)
+            };
         }
     }
 }

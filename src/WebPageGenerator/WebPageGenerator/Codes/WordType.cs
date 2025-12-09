@@ -11,12 +11,14 @@ namespace WebPageGenerator.Codes
         Enum,
         Field,
         Function,
+        Interface,
         Keyword,
         KeywordPurple,
         LocalVariable,
         Number,
         Other,
         Preprocess,
+        String,
         Struct,
     }
 }

@@ -25,7 +25,7 @@ namespace WebPageGenerator.Pages
 
         public override string ToHtmlString()
         {
-            return $"{Name}={IntValue}";
+            return $"{Name}=\"{IntValue}\"";
         }
     }
 }
