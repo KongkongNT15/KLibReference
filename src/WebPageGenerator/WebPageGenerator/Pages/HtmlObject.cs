@@ -11,6 +11,6 @@ namespace WebPageGenerator.Pages
 
         protected HtmlObject() { }
 
-        public abstract string ToHtmlString();
+        public abstract void Write(TextWriter writer);
     }
 }

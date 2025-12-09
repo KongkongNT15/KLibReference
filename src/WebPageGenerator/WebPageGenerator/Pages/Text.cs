@@ -28,11 +28,15 @@ namespace WebPageGenerator.Pages
             InlineText = inlineText;
         }
 
-        public override string ToHtmlString()
+        public override void Write(TextWriter writer)
         {
-            if (Class == null) return XmlHelper.ToXmlString(InlineText);
+            if (Class == null)
+            {
+                writer.Write(XmlHelper.ToXmlString(InlineText));
+                return;
+            }
 
-            return $"<{Tag} class=\"{Class}\">{XmlHelper.ToXmlString(InlineText)}</{Tag}>";
+            writer.Write($"<{Tag} class=\"{Class}\">{XmlHelper.ToXmlString(InlineText)}</{Tag}>");
         }
     }
 }

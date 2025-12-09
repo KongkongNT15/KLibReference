@@ -46,34 +46,32 @@ namespace WebPageGenerator.Pages
             }
         }
 
-        public override string ToHtmlString()
+        public override void Write(TextWriter writer)
         {
-            StringBuilder stringBuilder = new();
 
-            stringBuilder.Append($"<{Tag}");
+            writer.Write($"<{Tag}");
 
             // クラス属性を追加
             if (Class != null)
             {
-                stringBuilder.Append($" class={Class}");
+                writer.Write($" class={Class}");
             }
 
             // その他属性を追加
             foreach (var attribute in m_attributes)
             {
-                stringBuilder.Append($" {attribute.ToHtmlString()}");
+                writer.Write(' ');
+                attribute.Write(writer);
             }
 
-            stringBuilder.Append(" >");
+            writer.Write(" >");
 
             foreach (var node in m_nodes)
             {
-                stringBuilder.Append(node.ToHtmlString());
+                node.Write(writer);
             }
 
-            stringBuilder.Append($"</{Tag}>");
-
-            return stringBuilder.ToString();
+            writer.Write($"</{Tag}>");
         }
     }
 }

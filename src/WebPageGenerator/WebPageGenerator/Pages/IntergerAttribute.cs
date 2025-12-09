@@ -23,9 +23,9 @@ namespace WebPageGenerator.Pages
             IntValue = intValue;
         }
 
-        public override string ToHtmlString()
+        public override void Write(TextWriter writer)
         {
-            return $"{Name}=\"{IntValue}\"";
+            writer.Write($"{Name}=\"{IntValue}\"");
         }
     }
 }

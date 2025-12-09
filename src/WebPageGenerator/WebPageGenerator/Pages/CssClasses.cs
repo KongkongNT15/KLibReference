@@ -9,6 +9,7 @@ namespace WebPageGenerator.Pages
     {
         internal const string InlineCode = "inline-code";
 
+        internal const string SourceTable = "source-table";
         internal const string SourceCode = "source-code";
         internal const string SourceClass = "source-class";
         internal const string SourceComment = "source-comment";

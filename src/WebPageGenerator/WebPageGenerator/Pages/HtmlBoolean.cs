@@ -23,9 +23,9 @@ namespace WebPageGenerator.Pages
             BoolValue = value;
         }
 
-        public override string ToHtmlString()
+        public override void Write(TextWriter writer)
         {
-            return BoolValue ? "true" : "false";
+            writer.Write(BoolValue ? "true" : "false");
         }
     }
 }

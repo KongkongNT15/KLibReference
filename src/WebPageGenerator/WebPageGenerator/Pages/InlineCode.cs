@@ -15,9 +15,9 @@ namespace WebPageGenerator.Pages
 
         public InlineCode(string value) : base(value) { }
 
-        public override string ToHtmlString()
+        public override void Write(TextWriter writer)
         {
-            return $"<{Tag} class=\"{CssClasses.InlineCode}\">{XmlHelper.ToXmlString(InlineText)}</{Tag}>";
+            writer.Write($"<{Tag} class=\"{CssClasses.InlineCode}\">{XmlHelper.ToXmlString(InlineText)}</{Tag}>");
         }
     }
 }

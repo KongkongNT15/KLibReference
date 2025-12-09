@@ -26,9 +26,9 @@ namespace WebPageGenerator.Pages
             Color = new Color(color);
         }
 
-        public override string ToHtmlString()
+        public override void Write(TextWriter writer)
         {
-            return $"{Name}=\"{Color}\"";
+            writer.Write($"{Name}=\"{Color}\"");
         }
     }
 }

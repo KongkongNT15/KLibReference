@@ -48,10 +48,17 @@ namespace WebPageGenerator.Pages
         }
 
         public HtmlTableData() : this(false) { }
+        public HtmlTableData(string value) : this(false, value) { }
 
         public HtmlTableData(bool isHeader)
         {
             IsHeader = isHeader;
+        }
+
+        public HtmlTableData(bool isHeader, string value)
+        {
+            IsHeader = isHeader;
+            Value = value;
         }
 
         public void Add(string value)

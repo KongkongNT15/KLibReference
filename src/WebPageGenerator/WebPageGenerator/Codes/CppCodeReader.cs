@@ -81,6 +81,8 @@ namespace WebPageGenerator.Codes
             PreprocessBegin,
         }
 
+        public override string LanguageName => "C++";
+
         public static void AddWords(string path, WordType type)
         {
             static void load(string path, List<string> wordList)

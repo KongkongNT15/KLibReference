@@ -23,9 +23,9 @@ namespace WebPageGenerator.Pages
             Text = text; 
         }
 
-        public override string ToHtmlString()
+        public override void Write(TextWriter writer)
         {
-            return XmlHelper.ToXmlString(Text);
+            writer.Write(XmlHelper.ToXmlString(Text));
         }
     }
 }
