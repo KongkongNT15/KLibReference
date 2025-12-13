@@ -4,7 +4,7 @@ using System.Text;
 
 namespace WebPageGenerator.Pages
 {
-    internal sealed class TextBlock : HtmlElement
+    public sealed class TextBlock : HtmlElement
     {
         private readonly List<Text> m_inlines;
         public IReadOnlyList<Text> Inlines => m_inlines;

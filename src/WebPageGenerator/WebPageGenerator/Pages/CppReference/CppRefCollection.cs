@@ -4,7 +4,10 @@ using System.Text;
 
 namespace WebPageGenerator.Pages.CppReference
 {
-    public sealed class NamespacePage : CppPage
+    public abstract class CppRefCollection
     {
+
+
+        protected CppRefCollection() { }
     }
 }

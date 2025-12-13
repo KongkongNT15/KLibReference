@@ -303,6 +303,7 @@
 				<xs:element name="Enumerationes" type="PathCollection" minOccurs="0" />
 				<xs:element name="Functions" type="PathCollection" minOccurs="0" />
 			</xs:sequence>
+			<xs:attribute name="Name" type="xs:string" />
 		</xs:complexType>
 	</xs:element>
 
