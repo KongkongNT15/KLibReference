@@ -79,5 +79,10 @@ namespace WebPageGenerator.Pages
         {
             m_nodes.Add(text);
         }
+
+        public void Add(string text)
+        {
+            Add(new HtmlText(text));
+        }
     }
 }
