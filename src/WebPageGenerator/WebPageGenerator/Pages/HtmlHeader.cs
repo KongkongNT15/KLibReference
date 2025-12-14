@@ -5,11 +5,13 @@ using System.Text;
 
 namespace WebPageGenerator.Pages
 {
-    public sealed class HtmlHeader : HtmlElement
+    public sealed class HtmlHeader : HtmlNode
     {
+        private const string s_tag = "head";
         private readonly HtmlMetaData m_charset;
         private readonly HtmlMetaData m_description;
         private readonly StringElement m_title;
+        private readonly HtmlMetaData[] m_metas;
         
         public override HtmlHeader DeepCopy
         {
@@ -17,7 +19,14 @@ namespace WebPageGenerator.Pages
             {
                 HtmlHeader instance = new();
 
-                DeepCopyTo(instance);
+                instance.m_title.Value = m_title.Value;
+
+                var nodes = instance.m_metas;
+
+                for (int i = 0; i < m_metas.Length; i++)
+                {
+                    nodes[i] = m_metas[i].DeepCopy;
+                }
 
                 return instance;
             }
@@ -35,8 +44,6 @@ namespace WebPageGenerator.Pages
             set => m_title.Value = value;
         }
 
-        public override string Tag => "head";
-
         public override string Value { get => throw new NotSupportedException(); set => throw new NotSupportedException(); }
 
         public HtmlHeader()
@@ -45,14 +52,24 @@ namespace WebPageGenerator.Pages
             m_description = new HtmlMetaData { Name = "description" };
             m_title = new("title");
 
-            m_nodes.Add(m_charset);
-            m_nodes.Add(m_title);
-            m_nodes.Add(m_description);
+            m_metas = [
+                m_charset,
+                m_description
+            ];
         }
 
         public override void Write(TextWriter writer)
         {
-            throw new NotImplementedException();
+            writer.Write($"<{s_tag}>");
+
+            m_title.Write(writer);
+
+            foreach (var meta in m_metas)
+            {
+                meta.Write(writer);
+            }
+
+            writer.Write($"</{s_tag}>");
         }
     }
 }
