@@ -46,9 +46,8 @@ namespace WebPageGenerator.Pages
             }
         }
 
-        public override void Write(TextWriter writer)
+        protected void WriteTo(TextWriter writer)
         {
-
             writer.Write($"<{Tag}");
 
             // クラス属性を追加
@@ -72,6 +71,11 @@ namespace WebPageGenerator.Pages
             }
 
             writer.Write($"</{Tag}>");
+        }
+
+        public override void Write(TextWriter writer)
+        {
+            WriteTo(writer);
         }
     }
 }

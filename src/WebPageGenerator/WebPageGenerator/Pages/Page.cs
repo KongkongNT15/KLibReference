@@ -12,7 +12,9 @@ namespace WebPageGenerator.Pages
 
         public static HtmlNode Parse(XElement element)
         {
-            switch (element.Name.LocalName)
+            string name = element.Name.LocalName;
+
+            switch (name)
             {
                 case "InlineCode":
                     return new InlineCode(element.Value);
@@ -20,8 +22,55 @@ namespace WebPageGenerator.Pages
                 case "Line":
                     return new Line(element.Value);
 
+                case "Link":
+                    XAttribute attr = element.Attribute("Path") ?? throw new ArgumentException("<Link>に'Path'属性が含まれていません");
+
+                    return new Link(attr.Value, element.Value);
+
                 case "Run":
                     return new Run(element.Value);
+
+                case "Table":
+                    HtmlTable table = new();
+
+                    foreach (XElement xElement in element.Elements())
+                    {
+                        table.Add((HtmlTableRow)Parse(xElement));
+                    }
+
+                    return table;
+
+                case "TableData":
+                case "TableHeader":
+                    HtmlTableData data = new(name == "TableHeader");
+
+                    foreach (XNode node in element.Nodes())
+                    {
+                        if (node is XElement xElement)
+                        {
+                            data.Add(Parse(xElement));
+                        }
+                        else if (node is XText xText)
+                        {
+                            data.Add(xText.Value);
+                        }
+                        else
+                        {
+                            throw new NotSupportedException();
+                        }
+                    }
+
+                    return data;
+
+                case "TableRow":
+                    HtmlTableRow row = new();
+
+                    foreach (XElement xElement in element.Elements())
+                    {
+                        row.Add((HtmlTableData)Parse(xElement));
+                    }
+
+                    return row;
 
                 case "TextBlock":
                     TextBlock textBlock = new();
