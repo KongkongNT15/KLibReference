@@ -1,3 +1,7 @@
 <Solution>
+  <Project Path="PageEditor/PageEditor.csproj" Id="15f445f4-dc9d-4076-a0b2-745e580823b1">
+    <Platform Project="x64" />
+    <Deploy />
+  </Project>
   <Project Path="WebPageGenerator/WebPageGenerator.csproj" />
 </Solution>

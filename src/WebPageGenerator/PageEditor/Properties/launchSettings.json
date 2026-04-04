@@ -1,0 +1,10 @@
+{
+  "profiles": {
+    "PageEditor (Package)": {
+      "commandName": "MsixPackage"
+    },
+    "PageEditor (Unpackaged)": {
+      "commandName": "Project"
+    }
+  }
+}
