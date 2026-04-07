@@ -11,28 +11,60 @@
     Title="PageEditor">
 
     <Window.SystemBackdrop>
-        <MicaBackdrop />
+        <MicaBackdrop Kind="BaseAlt" />
     </Window.SystemBackdrop>
 
     <Grid>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="auto" />
-            <ColumnDefinition />
-        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions >
+            <RowDefinition Height="auto" />
+            <RowDefinition />
+        </Grid.RowDefinitions>
 
-        <TreeView Grid.Column="0" x:Name="FolderTree" Width="400" >
-            <TreeView.ItemTemplate >
-                <DataTemplate x:DataType="pages:PageItem">
-                    <pages:PageTreeItem Title="{x:Bind Name}" Type="{x:Bind Type}" ItemsSource="{x:Bind Children}" />
+        <TabView
+            Grid.Row="0"
+            x:Name="Tabs" >
+
+            <TabView.TabItemTemplate>
+                <DataTemplate x:DataType="pages:PageItem" >
+                    <TabViewItem 
+                        Header="{x:Bind Name}">
+                        <TabViewItem.IconSource>
+                            <FontIconSource Glyph="{x:Bind Glyph}" />
+                        </TabViewItem.IconSource>
+                    </TabViewItem>
                 </DataTemplate>
-            </TreeView.ItemTemplate>
-        </TreeView>
+            </TabView.TabItemTemplate>
+        </TabView>
 
-        <ScrollViewer Grid.Column="1" >
-            <StackPanel >
-                <UserControl x:Name="Contents" />
-                <Rectangle Height="24" />
-            </StackPanel>
-        </ScrollViewer>
+        <Grid Grid.Row="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="auto" />
+                <ColumnDefinition />
+            </Grid.ColumnDefinitions>
+
+            <TreeView
+                Grid.Column="0"
+                x:Name="FolderTree"
+                Width="300"
+                SelectionChanged="FolderTree_SelectionChanged">
+                <TreeView.ItemTemplate >
+                    <DataTemplate x:DataType="pages:PageItem">
+                        <pages:PageTreeItem
+                    Title="{x:Bind Name}"
+                    Type="{x:Bind Type}"
+                    ItemsSource="{x:Bind Children}" />
+                    </DataTemplate>
+                </TreeView.ItemTemplate>
+            </TreeView>
+
+            <ScrollViewer Grid.Column="1" >
+                <StackPanel >
+                    <UserControl x:Name="Contents" />
+                    <Rectangle Height="24" />
+                </StackPanel>
+            </ScrollViewer>
+        </Grid>
     </Grid>
+
+    
 </Window>

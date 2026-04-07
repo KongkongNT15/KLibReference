@@ -18,10 +18,25 @@ using Microsoft.UI.Xaml.Navigation;
 
 namespace PageEditor.Pages;
 
-public sealed partial class CppNamespacePage : UserControl
+public sealed partial class CppNamespacePage : EditPage
 {
     public CppNamespacePage()
     {
         InitializeComponent();
+    }
+
+    protected override void DoSaveData(StreamWriter sw)
+    {
+        throw new NotImplementedException();
+    }
+
+    protected override void DoInituializeData()
+    {
+        throw new NotImplementedException();
+    }
+
+    protected override void DoLoadData(StreamReader sr)
+    {
+        throw new NotImplementedException();
     }
 }

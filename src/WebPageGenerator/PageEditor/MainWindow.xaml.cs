@@ -1,3 +1,4 @@
+using Microsoft.UI;
 using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
 using Microsoft.UI.Xaml.Controls.Primitives;
@@ -29,13 +30,35 @@ namespace PageEditor
         {
             InitializeComponent();
 
+            {
+                var titleBar = AppWindow.TitleBar;
+                titleBar.ExtendsContentIntoTitleBar = true;
+
+                titleBar.BackgroundColor = ColorHelper.FromArgb(0, 0, 0, 0);
+                titleBar.InactiveBackgroundColor = ColorHelper.FromArgb(0, 0, 0, 0);
+            }
+
             ObservableCollection<PageItem> items = [];
 
-            items.Add(new PageItem("", PageType.Namespace) { Name = "page" });
+            {
+                var item = new PageItem("", PageType.Namespace) { Name = "page" };
+                items.Add(item);
+
+                item.Children.Add(new PageItem("", PageType.Class) { Name = "page" });
+            }
+
+            
             items.Add(new PageItem("", PageType.Function) { Name = "page" });
             items.Add(new PageItem("", PageType.Enum) { Name = "page" });
 
             FolderTree.ItemsSource = items;
+        }
+
+        private void FolderTree_SelectionChanged(TreeView sender, TreeViewSelectionChangedEventArgs args)
+        {
+            PageItem item = (PageItem)sender.SelectedItem;
+
+            
         }
     }
 }
