@@ -13,8 +13,12 @@ using System.Collections.ObjectModel;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
+using System.Threading.Tasks;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
+using WebPages;
+using Windows.UI.Text;
+using Microsoft.UI.Text;
 
 // To learn more about WinUI, the WinUI project structure,
 // and more about our project templates, see: http://aka.ms/winui-project-info.
@@ -26,19 +30,12 @@ namespace PageEditor
     /// </summary>
     public sealed partial class MainWindow : Window
     {
+        private readonly ObservableCollection<PageItem> m_items = [];
         public MainWindow()
         {
             InitializeComponent();
 
-            {
-                var titleBar = AppWindow.TitleBar;
-                titleBar.ExtendsContentIntoTitleBar = true;
-
-                titleBar.BackgroundColor = ColorHelper.FromArgb(0, 0, 0, 0);
-                titleBar.InactiveBackgroundColor = ColorHelper.FromArgb(0, 0, 0, 0);
-            }
-
-            ObservableCollection<PageItem> items = [];
+            ObservableCollection<PageItem> items = m_items;
 
             {
                 var item = new PageItem("", PageType.Namespace) { Name = "page" };
@@ -54,11 +51,42 @@ namespace PageEditor
             FolderTree.ItemsSource = items;
         }
 
-        private void FolderTree_SelectionChanged(TreeView sender, TreeViewSelectionChangedEventArgs args)
+        private async Task CreateNewPageAsync(ObservableCollection<PageItem> items)
         {
-            PageItem item = (PageItem)sender.SelectedItem;
+            PageSelectionDialog dialog = new(this);
 
-            
+            var result = await dialog.ShowAsync();
+
+            switch (result)
+            {
+                case ContentDialogResult.Primary:
+                    PageType type = dialog.SelectedType;
+                    break;
+
+                default:
+                    break;
+            }
         }
+
+        private Task CreateNewPageAsync(PageItem? parent)
+        {
+            if (parent != null)
+            {
+                return CreateNewPageAsync(parent.Children);
+            }
+            else
+            {
+                return CreateNewPageAsync(m_items);
+            }
+        }
+
+        private Task CreateNewPageAsync()
+        {
+            return CreateNewPageAsync(FolderTree.SelectedItem as PageItem);
+        }
+
+        
+
+        
     }
 }

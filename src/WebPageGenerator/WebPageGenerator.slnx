@@ -1,7 +1,9 @@
 <Solution>
   <Project Path="PageEditor/PageEditor.csproj" Id="15f445f4-dc9d-4076-a0b2-745e580823b1">
+    <BuildDependency Project="WebPages/WebPages.csproj" />
     <Platform Project="x64" />
     <Deploy />
   </Project>
   <Project Path="WebPageGenerator/WebPageGenerator.csproj" />
+  <Project Path="WebPages/WebPages.csproj" Id="9b38489b-7d61-462c-b0a4-d6ae8443150e" />
 </Solution>

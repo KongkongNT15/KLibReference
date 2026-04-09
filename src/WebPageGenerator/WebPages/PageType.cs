@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace PageEditor.Pages
+namespace WebPages
 {
     public enum PageType
     {

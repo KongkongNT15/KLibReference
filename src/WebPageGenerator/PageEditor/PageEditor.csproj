@@ -15,6 +15,7 @@
 	  <WindowsAppSDKSelfContained>true</WindowsAppSDKSelfContained>
   </PropertyGroup>
   <ItemGroup>
+    <None Remove="PageSelectionDialog.xaml" />
     <None Remove="Pages\CppNamespacePage.xaml" />
   </ItemGroup>
 
@@ -42,6 +43,14 @@
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="Microsoft.WindowsAppSDK" Version="1.8.260317003" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\WebPages\WebPages.csproj" />
+  </ItemGroup>
+  <ItemGroup>
+    <Page Update="PageSelectionDialog.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
   <ItemGroup>
     <Page Update="Pages\CppNamespacePage.xaml">
