@@ -9,8 +9,10 @@ namespace WebPages.Primitives.InlineTexts
     public abstract class TextElement
     {
         public abstract void WriteHtml(TextWriter writer, string? attributes);
+        public abstract void WriteXaml(TextWriter writer, string? attributes);
 
         public void WriteHtml(TextWriter writer) => WriteHtml(writer, null);
+        public void WriteXaml(TextWriter writer) => WriteHtml(writer, null);
 
         protected static void WriteAttributes(TextWriter writer, string? attributes)
         {

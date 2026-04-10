@@ -30,5 +30,10 @@ namespace WebPages.Primitives.InlineTexts
             }
             writer.Write("</a>");
         }
+
+        public override void WriteXaml(TextWriter writer, string? attributes)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

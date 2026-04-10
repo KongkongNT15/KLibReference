@@ -13,10 +13,15 @@ namespace WebPages.Primitives.InlineTexts
         public RgbColor Color;
         public string Value;
 
+        public Text(string value)
+        {
+            Value = value;
+        }
+
         public override void WriteHtml(TextWriter writer, string? attributes)
         {
-            writer.Write("<span style=\"");
-            
+            writer.Write("<span style=\"color: ");
+            writer.Write(Color.ToString());
             WriteAttributes(writer, attributes);
 
             throw new NotImplementedException();

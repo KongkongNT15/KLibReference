@@ -12,5 +12,10 @@ namespace WebPages.Primitives.InlineTexts
         {
             writer.Write("<br>");
         }
+
+        public override void WriteXaml(TextWriter writer, string? attributes)
+        {
+            writer.Write("<LineBreak/>");
+        }
     }
 }

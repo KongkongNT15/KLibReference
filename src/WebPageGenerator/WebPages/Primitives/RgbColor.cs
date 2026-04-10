@@ -8,6 +8,9 @@ namespace WebPages.Primitives
 {
     public struct RgbColor
     {
+        public static readonly RgbColor Black = new(0, 0, 0);
+        public static readonly RgbColor White = new(255, 255, 255);
+
         public byte R;
         public byte G;
         public byte B;
